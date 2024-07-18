@@ -4,7 +4,7 @@ from bitarray import bitarray
 
 class Discriminator: 
 
-    def __init__(self, entrySize, tupleSize, data=None):
+    def __init__(self, entrySize, tupleSize):
         
         self.entrySize = entrySize
         self.tupleSize = tupleSize
@@ -105,7 +105,7 @@ class Discriminator:
 
         return rank
 
-    def info():
+    def info(self):
     
         totalBits = 0
         print("Entry = ", self.entrySize, ", Tuples = ",self.tupleSize, ", RAMs = ",self.numRams,", RAM size = ",len(self.rams)," bits\n")
@@ -118,7 +118,7 @@ class Discriminator:
         print("Total Bits = ", totalBits)
     
 
-    def reset():
+    def reset(self):
     
         #Generating pseudo-random mapping
 
@@ -133,11 +133,11 @@ class Discriminator:
                 self.rams[i].bitarray[j] = 0
             
 
-    def getRamBits(): 
+    def getRamBits(self): 
         return len(self.rams)
     
 
-    def getNumRams():
+    def getNumRams(self):
         return self.numRams
 
 ####### main #######
@@ -158,4 +158,3 @@ print("Rank= " ,disc.rank(data), "\n")
 disc.info()
 
 # del disc
-
