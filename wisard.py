@@ -2,32 +2,33 @@
 
 import numpy as np
 
-from bloomwisard.core.src.discriminator import Discriminator
+from discriminator import Discriminator
+
+#from bloomwisard.core.src.discriminator import Discriminator
 
 
 class Wisard:
 
-    def __init__(self, entrySize, tupleSize, numDiscriminator, discriminators):
+    def __init__(self, entrySize, tupleSize, numDiscriminator):
         self.entrySize = entrySize
         self.tupleSize = tupleSize
         self.numDiscriminator = numDiscriminator
         self.discriminators = []
         for i in range (self.numDiscriminators):    
-            discriminators.append(Discriminator(self.entrySize,self.tupleSize))
+            self.discriminators.append(Discriminator(self.entrySize,self.tupleSize))
         
 
-    
-    def addDiscriminator():
+    def addDiscriminator(self):
         self.discriminators.append(Discriminator(self.entrySize, self.tupleSize))
 
 
-    def train(self, data, label, discriminators):
+    def train(self, data, label):
 
         for i in range (len(label)):
             self.discriminators[label[i]].train(data[i])
         
     
-    def rank(data):
+    def rank(self,data):
         label = np.zeros(len(data), dtype=int)  
 
         for i in range(len(data)):
@@ -42,7 +43,7 @@ class Wisard:
         return label
 
 
-    def info():
+    def info(self):
 
         print("Número de Discriminadores", self.numDiscriminator, "\n")
 
@@ -51,7 +52,7 @@ class Wisard:
             self.discriminators[i].info()
         
     
-    def stats():
+    def stats(self):
 
         stats = np.zeros(4, dtype=np.uint64)
 
@@ -67,13 +68,13 @@ class Wisard:
 
         return stats
 
-    def reset():
+    def reset(self):
         
         for i in range (self.numDiscriminator):
             self.discriminators[i].reset()
             
 
-
+#testando o código
 disc = Discriminator(1024, 16)
 
 data = np.zeros(1024, dtype=bool)
